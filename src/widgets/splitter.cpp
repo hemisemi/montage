@@ -13,7 +13,7 @@ Splitter::Splitter(){
 void Splitter::paintEvent(QPaintEvent *e){
     QPainter painter(this);
 
-    painter.fillRect(e->rect(), Qt::black);
+    painter.fillRect(e->rect(), palette().window().color().darker());
 }
 
 }

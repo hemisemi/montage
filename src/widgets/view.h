@@ -8,7 +8,7 @@ namespace gui{
 
 class View : public QWidget{
 public:
-    View();
+    View(QWidget *parent = nullptr);
 
 protected:
     void paintEvent(QPaintEvent *event);

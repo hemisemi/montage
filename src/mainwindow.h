@@ -3,7 +3,7 @@
 #include <QMainWindow>
 
 namespace hsm{
-namespace video{
+namespace montage{
 namespace gui{
 
 class Splitter;

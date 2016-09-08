@@ -5,8 +5,8 @@
 int main(int argc, char *argv[]){
     QApplication a(argc, argv);
 
-    a.setApplicationName("Hemisemi Video");
-    a.setApplicationVersion("0.0 alpha");
+    a.setApplicationName("Hemisemi Montage");
+    a.setApplicationVersion("0.0");
 
     hsm::video::gui::MainWindow w;
     w.show();

@@ -17,12 +17,16 @@ SOURCES += main.cpp\
     widgets/viewcontainer.cpp \
     widgets/splitter.cpp \
     widgets/view.cpp \
-    widgets/viewcontainertoolbar.cpp
+    widgets/viewcontainertoolbar.cpp \
+    views/videostreamview.cpp \
+    views/defaultview.cpp
 
 HEADERS  += mainwindow.h \
     widgets/viewcontainer.h \
     widgets/splitter.h \
     widgets/view.h \
-    widgets/viewcontainertoolbar.h
+    widgets/viewcontainertoolbar.h \
+    views/videostreamview.h \
+    views/defaultview.h
 
 FORMS    +=

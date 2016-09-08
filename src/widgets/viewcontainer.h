@@ -13,7 +13,7 @@ class ViewContainerToolbar;
 
 class ViewContainer : public QWidget{
 public:
-    ViewContainer(QWidget *parent = nullptr);
+    ViewContainer(View *view = nullptr, QWidget *parent = nullptr);
 
     View *getView() const;
     void setView(View *);

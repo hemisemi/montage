@@ -6,8 +6,8 @@ namespace hsm{
 namespace video{
 namespace gui{
 
-View::View(){
-    //
+View::View(QWidget *parent) : QWidget(parent){
+    setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 }
 
 void View::paintEvent(QPaintEvent *event){
