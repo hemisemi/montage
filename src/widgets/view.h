@@ -3,7 +3,7 @@
 #include <QWidget>
 
 namespace hsm{
-namespace video{
+namespace montage{
 namespace gui{
 
 class View : public QWidget{

@@ -8,7 +8,7 @@ int main(int argc, char *argv[]){
     a.setApplicationName("Hemisemi Montage");
     a.setApplicationVersion("0.0");
 
-    hsm::video::gui::MainWindow w;
+    hsm::montage::gui::MainWindow w;
     w.show();
 
     return a.exec();

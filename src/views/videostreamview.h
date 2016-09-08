@@ -3,7 +3,7 @@
 #include "../widgets/view.h"
 
 namespace hsm{
-namespace video{
+namespace montage{
 namespace gui{
 
 class VideoStreamView : public View{

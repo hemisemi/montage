@@ -6,7 +6,7 @@
 #include <QVBoxLayout>
 
 namespace hsm{
-namespace video{
+namespace montage{
 namespace gui{
 
 ViewContainer::ViewContainer(View *view, QWidget *parent) : QWidget(parent){

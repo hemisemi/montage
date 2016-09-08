@@ -5,7 +5,7 @@
 #include "views/videostreamview.h"
 
 namespace hsm{
-namespace video{
+namespace montage{
 namespace gui{
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent){

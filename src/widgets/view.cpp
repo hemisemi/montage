@@ -3,7 +3,7 @@
 #include <QPainter>
 
 namespace hsm{
-namespace video{
+namespace montage{
 namespace gui{
 
 View::View(QWidget *parent) : QWidget(parent){

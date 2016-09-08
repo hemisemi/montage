@@ -3,7 +3,7 @@
 #include <QPaintEvent>
 
 namespace hsm{
-namespace video{
+namespace montage{
 namespace gui{
 
 DefaultView::DefaultView(QWidget *parent) : View(parent){

@@ -5,7 +5,7 @@
 class QVBoxLayout;
 
 namespace hsm{
-namespace video{
+namespace montage{
 namespace gui{
 
 class View;
