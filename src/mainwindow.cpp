@@ -4,6 +4,8 @@
 
 #include "views/videostreamview.h"
 
+#include <hsm/montage/io/resource.h>
+
 namespace hsm{
 namespace montage{
 namespace gui{
@@ -16,6 +18,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent){
 
     _splitter->addWidget(new ViewContainer(new VideoStreamView));
     _splitter->addWidget(new ViewContainer);
+
+	hsm::montage::resource vds;
+	vds.load("/home/timothee/videos/Chaton/Les Alcôves final.mp4");
 }
 
 MainWindow::~MainWindow(){
