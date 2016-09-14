@@ -11,6 +11,8 @@ namespace gui{
 VideoStreamView::VideoStreamView(QWidget *parent) : View(parent){
     QVBoxLayout *layout = new QVBoxLayout(this);
     layout->addWidget(_player = new Player(this));
+    layout->setMargin(0);
+    layout->setSpacing(0);
 }
 
 Player *VideoStreamView::player() const{

@@ -6,11 +6,13 @@
 #include "player/player.h"
 #include "player/renderer/renderer.h"
 
-#include <hsm/montage/config/settings.h>
+#include <hsm/montage/settings.h>
 #include <hsm/montage/montage.h>
 #include <hsm/montage/io/resource.h>
-#include <hsm/montage/video/video.h>
-#include <hsm/montage/stream/source.h>
+#include <hsm/montage/video/source.h>
+#include <hsm/montage/video/input.h>
+#include <hsm/montage/source.h>
+#include <hsm/montage/nodes/sequencer.h>
 
 namespace hsm{
 namespace montage{
@@ -27,26 +29,31 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent){
     _splitter->addWidget(new ViewContainer(sv));
     _splitter->addWidget(new ViewContainer);
 
-    settings s;
-    hsm::montage::init_settings(s);
-
-    hsm::montage::io::resource vds(s);
-    vds.load("/home/timothee/Téléchargements/Adventure Time Saison 6 VOSTFR/Adventure Time S06E01-02.mkv");
+    hsm::montage::io::resource *vds = new hsm::montage::io::resource;
+    vds->load("/home/timothee/Téléchargements/Adventure Time Saison 6 VOSTFR/Adventure Time S06E01-02.mkv");
     //vds.load("/home/timothee/videos/Nouveau projet.ogv");
     //vds.load("/home/timothee/videos/RickAndMorty-Saison1/Rick.and.Morty.S01E02.Lawnmower Dog.avi");
 
-    hsm::montage::video *source = nullptr;
-    for(hsm::montage::source *src : vds.sources()){
+    hsm::montage::video::source *source = nullptr;
+    for(hsm::montage::source *src : vds->sources()){
         if(src->type() == hsm::montage::source::video){
-            source = (hsm::montage::video*)src;
+            source = (hsm::montage::video::source*)src;
         }
     }
 
     if(source != nullptr){
-        hsm::montage::video::parser *parser = source->new_parser();
+        /*hsm::montage::video::source::parser *parser = source->new_parser();
 
-        if(parser != nullptr)
+        if(parser != nullptr){
+            parser->seek(10.0);
             sv->player()->renderer()->setFrame(parser->read_frame());
+        }*/
+
+        hsm::montage::node::sequencer *sequencer = new hsm::montage::node::sequencer;
+        sequencer->input()->set_source(source);
+
+        sv->player()->setStream(sequencer->output());
+        sv->player()->play();
     }
 }
 

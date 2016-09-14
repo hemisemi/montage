@@ -11,7 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = gui
 TEMPLATE = app
 
-LIBS = -lhsm-montage-debug -lavformat -lavcodec -lavutil -lz -lm -lswscale -lhsm
+LIBS = -lhsm-montage-debug -lavformat -lavcodec -lavutil -lz -lm -lswscale -lhsm-paint -lcairo -lhsm -ljpeg -lpng
 
 SOURCES += main.cpp\
         mainwindow.cpp \

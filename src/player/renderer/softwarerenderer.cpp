@@ -2,7 +2,7 @@
 #include <QPaintEvent>
 #include <QPainter>
 
-#include <hsm/montage/video/video_frame.h>
+#include <hsm/montage/video/frame.h>
 
 namespace hsm{
 namespace montage{
@@ -23,11 +23,14 @@ QWidget *SoftwareRenderer::widget() const{
     return _widget;
 }
 
-void SoftwareRenderer::setFrame(const video_frame *frame){
+void SoftwareRenderer::setFrame(const video::frame *frame){
     if(frame == nullptr || frame->planes().empty())
         return;
     hsm::bitmap *plane = frame->planes().front();
-    _image = QImage(plane->data(), plane->width(), plane->height(), QImage::Format_RGBA8888);
+    _image = QImage(plane->data(), plane->width(), plane->height(), plane->stride(), QImage::Format_RGB888);
+
+    if(_widget != nullptr)
+        _widget->repaint();
 }
 
 const QImage & SoftwareRenderer::image() const{

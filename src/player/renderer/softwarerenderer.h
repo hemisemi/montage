@@ -29,7 +29,7 @@ public:
 
     QWidget *widget() const;
 
-    void setFrame(const video_frame *frame);
+    void setFrame(const video::frame *frame);
 
     const QImage & image() const;
 

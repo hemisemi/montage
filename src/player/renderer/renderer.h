@@ -3,7 +3,11 @@
 namespace hsm{
 namespace montage{
 
-class video_frame;
+namespace video{
+
+class frame;
+
+}
 
 namespace gui{
 
@@ -12,7 +16,7 @@ public:
     Renderer();
     virtual ~Renderer() = 0;
 
-    virtual void setFrame(const video_frame *frame) = 0;
+    virtual void setFrame(const video::frame *frame) = 0;
 
     virtual QWidget *widget() const = 0;
 };
