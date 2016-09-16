@@ -13,6 +13,7 @@
 #include <hsm/montage/video/input.h>
 #include <hsm/montage/source.h>
 #include <hsm/montage/nodes/sequencer.h>
+#include <hsm/montage/project.h>
 
 #include <iostream>
 
@@ -31,10 +32,13 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent){
     _splitter->addWidget(new ViewContainer(sv));
     _splitter->addWidget(new ViewContainer);
 
-    hsm::montage::io::resource *vds = new hsm::montage::io::resource;
+	hsm::montage::project *proj = new hsm::montage::project;
+
+	hsm::montage::io::resource *vds = new hsm::montage::io::resource(proj->root());
     //vds->load("/home/timothee/Téléchargements/Adventure Time Saison 6 VOSTFR/Adventure Time S06E01-02.mkv");
     //vds.load("/home/timothee/videos/Nouveau projet.ogv");
-    vds->load("/home/timothee/videos/RickAndMorty-Saison1/Rick.and.Morty.S01E02.Lawnmower Dog.avi");
+	//vds->load("/home/timothee/videos/RickAndMorty-Saison1/Rick.and.Morty.S01E02.Lawnmower Dog.avi");
+	vds->load("/home/timothee/downloads/Adventure Time Saison 5 VOSTFR/Adventure Time S05E01-02.mkv");
 
     hsm::montage::video::source *source = nullptr;
     for(hsm::montage::source *src : vds->sources()){
@@ -51,8 +55,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent){
             sv->player()->renderer()->setFrame(parser->read_frame());
         }*/
 
-        hsm::montage::node::sequencer *sequencer = new hsm::montage::node::sequencer;
-        sequencer->input()->set_source(ref<montage::source>((montage::source*)source));
+		hsm::montage::node::sequencer *sequencer = new hsm::montage::node::sequencer(proj->root());
+		sequencer->input()->set_source(ref<montage::source>((montage::source*)source));
 
         sv->player()->setStream(sequencer->output());
         sv->player()->play();
